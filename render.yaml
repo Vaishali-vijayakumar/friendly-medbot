@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: friendly-medbot-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000  # Optional: customize if needed
+
+  - type: web
+    name: friendly-medbot-frontend
+    env: static
+    plan: free
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/dist
+    autoDeploy: true
+
