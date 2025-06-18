@@ -10,13 +10,10 @@ services:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 10000  # Optional: customize if needed
+        value: 10000  # Optional custom port
 
-  - type: web
+  - type: static
     name: friendly-medbot-frontend
-    env: static
-    plan: free
     buildCommand: cd client && npm install && npm run build
     staticPublishPath: client/dist
     autoDeploy: true
-
